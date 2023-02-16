@@ -1,0 +1,6 @@
+
+services:
+  app:
+    image: tpg_demo
+    ports:
+          - 8080:8080
