@@ -8,4 +8,8 @@ public class CandidateNotFoundException extends RuntimeException {
     CandidateNotFoundException(String fname, String lname) {
         super("Could not find candidate " + fname + " " + lname);
     }
+
+    CandidateNotFoundException(Integer floor) {
+        super("Could not find candidate with score greater than " + floor);
+    }
 }

@@ -17,7 +17,9 @@ class LoadDatabase {
         return args -> {
 
             repository.save(new Candidate("Thomas", "Yang", "thomas.y2022@gmail.com"));
-            repository.save(new Candidate("Demo", "Demo", "demo@gmail.com"));
+            repository.save(new Candidate("Thomas", "Demo", "thomas.demo@gmail.com"));
+            repository.save(new Candidate("Demo", "Yang", "demo.yang@gmail.com"));
+            repository.save(new Candidate("Demo", "Demo", "demo.demo@gmail.com"));
             repository.findAll().forEach(c -> log.info("Preloaded " + c));
         };
     }

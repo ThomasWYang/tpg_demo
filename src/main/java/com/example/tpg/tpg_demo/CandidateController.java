@@ -1,6 +1,7 @@
 package com.example.tpg.tpg_demo;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -28,13 +30,19 @@ public class CandidateController {
   }
 
   @GetMapping("/candidates")
-  List<Candidate> all() {
-    return repository.findAll();
-  }
+  List<Candidate> all(@RequestParam(required = false) String fname, @RequestParam(required = false) String lname,
+      @RequestParam(required = false) String email) {
 
-  @PostMapping("/candidates")
-  Candidate newCandidate(@RequestBody Candidate newCandidate) {
-    return repository.save(newCandidate);
+    var result = repository.findAll();
+
+    if (fname != null)
+      result = result.stream().filter(c -> c.getFname().equals(fname)).collect(Collectors.toList());
+    if (lname != null)
+      result = result.stream().filter(c -> c.getLname().equals(lname)).collect(Collectors.toList());
+    if (email != null)
+      result = result.stream().filter(c -> c.getEmail().equals(email)).collect(Collectors.toList());
+
+    return result;
   }
 
   @GetMapping("/candidates/{id}")
@@ -44,22 +52,26 @@ public class CandidateController {
         .orElseThrow(() -> new CandidateNotFoundException(id));
   }
 
-  @GetMapping("/candidates/{fname}/{lname}")
+  @PostMapping("/candidates")
+  Candidate newCandidate(@RequestBody Candidate newCandidate) {
+    return repository.save(newCandidate);
+  }
 
-  List<Candidate> findByName(@PathVariable String fname, @PathVariable String lname) {
+  @GetMapping("/candidates/scoregreater/{floor}")
 
-    TypedQuery<Candidate> query = em.createQuery("select c from Candidate c where c.fname = ?1 and c.lname = ?2",
+  List<Candidate> findByScore(@PathVariable Integer floor) {
+
+    TypedQuery<Candidate> query = em.createQuery("select c from Candidate c where c.score >= ?1 ",
         Candidate.class);
 
-    query.setParameter(1, fname);
-    query.setParameter(2, lname);
+    query.setParameter(1, floor);
 
     List<Candidate> result = query.getResultList();
 
     if (result.size() > 0) {
       return result;
     } else {
-      throw new CandidateNotFoundException(fname, lname);
+      throw new CandidateNotFoundException(floor);
     }
   }
 

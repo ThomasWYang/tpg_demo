@@ -1,6 +1,7 @@
 package com.example.tpg.tpg_demo;
 
 import java.util.Objects;
+import java.util.Random;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,15 +13,16 @@ public class Candidate {
     private String fname;
     private String lname;
     private String email;
-    private Integer score = 0;
+    private Integer score;
 
-    Candidate() {}
+    Candidate() {
+    }
 
     Candidate(String fname, String lname, String email) {
         this.fname = fname;
         this.lname = lname;
         this.email = email;
-
+        this.score = new Random().nextInt(100 - 60) + 60;
     }
 
     public Integer getScore() {
