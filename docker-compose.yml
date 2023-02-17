@@ -1,6 +1,6 @@
 
 services:
   app:
-    image: tpg_demo
+    image: thomasy2022/tpg_demo
     ports:
           - 8080:8080
