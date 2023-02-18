@@ -20,7 +20,10 @@ git clone https://github.com/ThomasWYang/tpg_demo.git
 ```
 3. Change directory into that folder and run following command, the app will run on default port 8080.
 ```sh
-./mvnw clean spring-boot:run #OR
+./mvnw clean spring-boot:run
+```
+OR
+```sh
 mvn clean spring-boot:run
 ```
 If you see this info is displayed, the app is running correctly
@@ -48,7 +51,10 @@ It will run on configured port 8080 and you will see similar info below.
 
 Run the following command to execute Unit Test
 ```sh
-./mvnw test #OR
+./mvnw test
+```
+OR
+```sh
 mvn test
 ```
 ![图片](https://user-images.githubusercontent.com/84115795/219512711-6f713a0c-11a8-478e-a95d-a717434f60c9.png)
