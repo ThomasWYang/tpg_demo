@@ -26,24 +26,23 @@ mvn clean spring-boot:run
 If you see this info is displayed, the app is running correctly
 ![图片](https://user-images.githubusercontent.com/84115795/219512379-42235cb8-0569-4b2c-a6e8-592e8f5369f5.png)
 
-4. if you wish to compose and run using docker locally, before run the following command, make sure Docker desktop (https://www.docker.com/) is running.
-```sh
-docker compose up
-```
-It will run on configured port 8080 and you will see similar info below. 
-![图片](https://user-images.githubusercontent.com/84115795/219513462-6ecf3fe1-9ce0-4bc9-aa5a-f368f246212d.png)
-
 ## Install via Docker
 
 1. Make sure Docker desktop (https://www.docker.com/) is running.
 2. Pull the docker image from docker hub.
 ```sh
-    docker pull thomasy2022/tpg_demo
+docker pull thomasy2022/tpg_demo
 ```
 3. Run the following command to run the app in a container. The app will run on port 8080 with below command.
 ```sh
-    docker run -d -p 8080:8080 thomasy2022/tpg_demo 
+docker run -d -p 8080:8080 thomasy2022/tpg_demo 
 ```
+4. You can also use docker compose file to run the app
+```sh
+docker compose up
+```
+It will run on configured port 8080 and you will see similar info below. 
+![图片](https://user-images.githubusercontent.com/84115795/219513462-6ecf3fe1-9ce0-4bc9-aa5a-f368f246212d.png)
 
 ## Test in local environment
 
