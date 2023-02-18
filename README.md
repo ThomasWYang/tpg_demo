@@ -2,7 +2,7 @@
 # Readme
 
 This is a simple Rest Api created using Spring-Boot with in memory H2 database. The object Model is Candidate with fname(string), lname(string), email(string) and score(int).
-When the Api started, it will preloaded with 4 Candidates with predefined names and random scores from 60 to 100.
+When the Api started, it will preloaded with 4 Candidates with predefined names and random scores from 60 to 100. For simplicity, the app allow CORS from all origin and all method.
 
 Original java code is tested under Windows environment. Docker file is tested under both Windows and EC2 linux environment.
 
