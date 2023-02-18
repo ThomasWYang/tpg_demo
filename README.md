@@ -22,7 +22,7 @@ git clone https://github.com/ThomasWYang/tpg_demo.git
 ```sh
 ./mvnw clean spring-boot:run
 ```
-OR
+Or
 ```sh
 mvn clean spring-boot:run
 ```
@@ -53,7 +53,7 @@ Run the following command to execute Unit Test
 ```sh
 ./mvnw test
 ```
-OR
+Or
 ```sh
 mvn test
 ```
